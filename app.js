@@ -63,7 +63,7 @@ angular
         $stateProvider.state(defaultState);
     }
 ])
-.run(
+.run(/*
     function($transitions, $state) {
         $transitions.onSuccess({}, function($transitions){
             var toState = $transitions.$to();
@@ -92,7 +92,7 @@ angular
                 }
             }
           });
-    }
+    }*/
 ); 
     /*function(AuthService, $rootScope, $state){
         $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams, options){  

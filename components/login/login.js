@@ -45,33 +45,24 @@ function Authorize(){
     function loginController($http, $q, $state, $scope, $rootScope, AuthService){
         var self = this;
         self.submit = function(){
-            var params = {
-                username: self.username,
-                password: self.password
-            }
-            var REST_SERVICE_URI = 'http://localhost:8090/authenticate';
-            //var deferredObject = $q.defer();
+            var REST_SERVICE_URI = 'http://127.0.0.1:5500/BankUI/json/users.json';
             $http({
                 url: REST_SERVICE_URI,
-                method: "POST",
-                params
+                method: "GET"
             }).then(function (response) {
-                //deferredObject.resolve(response);
-                self.password = null;
-                if (response.data.token) {
-                    self.message = '';
-                    $http.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.token;
-                    AuthService.user = response.data.user;
-                    $rootScope.$broadcast('LoginSuccessful');
-                    $state.go('dashboard');
-                } else {
-                    self.message = 'Authetication Failed. Invalid credentials provided';
+                var records = response.data.records;
+                for (var i=0; i < records.length; i++){
+                    if ( records[i].username == self.username &&
+                        records[i].password == self.password ){
+                            AuthService.user = records[i];
+                            $rootScope.loggedIn = true;
+                            $state.go('dashboard');
+                        }
                 }
+                self.message = 'Authetication Failed. Invalid credentials provided';
             }, function (errResponse) {
-                //defferedObject.reject(errResponse);
                 self.message = 'Authetication Failed. Invalid credentials provided';
             });
-            //return deferredObject.promise;
         }
         if (AuthService.flag==true)
             self.showTouchID = true;
@@ -82,9 +73,6 @@ function Authorize(){
         }
     }
     
-    
-
-
 /*
     angular.module('App')
     .controller('temp', temp)

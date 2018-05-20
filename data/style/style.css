@@ -58,7 +58,7 @@ a{
     color: #373e48;
 }
 .navbar-default{
-    background: #535c68;
+    background: rgb(44, 58, 71);
     border: 0;
     padding: 18px 0;
     padding-bottom: 19px;
@@ -68,7 +68,7 @@ a{
     text-indent: -9999px;
     background: url(../images/logo-dark.png) no-repeat;
     display: block;
-    width: 100px;
+    width: 110px;
     height: 35px;
     margin-top:5px;
     background-size: 100%;
@@ -174,7 +174,7 @@ a{
     font-family: "PT Sans Narrow";
 }
 .panel-body .fas{
-    color: #00a8ff;
+    color: #bfbf9c;
     font-size: 1.3em;
     margin-right: 5px;
     margin-top:2px;
@@ -191,10 +191,10 @@ a{
     background-color: #00a8ff;
 }
 .bg{
-    background-image: url(../images/icover2.jpg);
+    background-image: url(../images/icover.jpg);
     background-color: #535c68;
     height: calc(100% - 100px);
-    background-position: center center;
+    background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -217,18 +217,18 @@ a{
     margin-bottom: 30px;
 }
 .bg .left-panel .panel-default{
-    background: #535c68;
-    border-color: #777;
+    background: #2C3A47;
+    border-color: #4f6172;
 }
 .bg .panel-body{
     padding: 65px 45px;
 }
 .bg .left-panel .panel-default .logo-container{
-    background: #495057;
+    background: #3f5061;
     width: 90px;
     height: 90px;
     margin: 0 auto;
-    border: 1px solid #565e63;
+    border: 1px solid #4f6172;
     border-radius: 50%;
 }
 .bg .left-panel .panel-default .logo-container .user-logo{
@@ -239,7 +239,7 @@ a{
     margin: 0 auto;
 }
 .bg .left-panel .panel-default form{
-    padding: 30px 0;
+    padding: 25px 0;
 }
 
 .bg .left-panel .panel-default form input::placeholder {
@@ -255,11 +255,11 @@ a{
     display: block;
     margin: 5px 0;
     border: 1px solid #565e63;
-    color: #999 !important;
+    color: rgb(221, 221, 221) !important;
     font-family:"PT Sans Narrow Bold";
     border-radius: 0;
     width: 100%;
-    background: #495057;
+    background: #3f5061;
     padding: 10px 10px 10px 5px;
     font-size: 1.2em;
 }
@@ -295,10 +295,10 @@ a{
     overflow:hidden;
     padding: 17.5px 170px;
     color: #fdfdfd;
-    background: rgb(83, 92, 104);
+    background: #2C3A47;
     position: absolute;
     bottom: 0;
-    border-top: 1px solid #777;
+    border-top: 1px solid #4f6172;
 }
 .bg-footer p{
     font-size: 1em;
@@ -354,14 +354,14 @@ input 				{
     width: 100%;
     background: transparent;
     border:none;
-    border-bottom:1px solid #757575;
+    border-bottom:1px solid rgb(221, 221, 221);
     color: #fff;
 }
 input:focus 		{ outline:none; }
 
 /* LABEL ======================================= */
 label 				 {
-    color:#999;
+    color:rgb(221, 221, 221);
     font-size:18px;
     font-weight:normal;
     position:absolute;
@@ -440,7 +440,9 @@ input:focus ~ .highlight {
 span.message{
     color: #ff7675;
 }
-
+span.links{
+    color: rgb(221, 221, 221);
+}
 /*Angular*/
 
 .ui-menu{
