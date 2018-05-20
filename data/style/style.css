@@ -14,6 +14,9 @@ body{
 body,html{
     height: 100%;
 }
+.lighter{
+    font-family: "PT Sans Narrow", sans-serif;
+}
 a{
     color: #535c68 !important;
     text-decoration: none !important;
@@ -24,7 +27,9 @@ a{
 .navbar-form{
     margin: 0;
 }
-
+.btn-bank{
+    background: #bfbf9c;
+}
 .navbar-nav>li>a{
     padding: 0;
     color: #fff !important;
@@ -135,6 +140,9 @@ a{
 #main-menu li:hover{
     background: #f8f8f8;
 }
+#main-menu li:active{
+    background: #f8f8f8;
+}
 
 #main-menu li a{
     width: 170px;
@@ -142,11 +150,15 @@ a{
     float: left;
     padding: 8px 0;
 }
+.text-bank{
+    color: #bfbf9c;
+}
 #main-menu li i{
     width: 30px;
     text-align: left;
     display: block;
     float:left;
+    margin-left: 5px;
     line-height: 24px;
 }
 #main-menu li:after{
@@ -182,6 +194,12 @@ a{
     border: 0;
     border-radius:0;
     margin:0;
+}
+.list-group-item-text{
+    line-height: 1;
+}
+hr{
+    border-top-color: #ddd;
 }
 .list-group-item:first-child{
     border: 0;
