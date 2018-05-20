@@ -5,7 +5,7 @@ angular.module('App')
 
 function AuthService(){
     return {
-        user: null,
+        user: {},
         flag: false
     }
 }
@@ -55,6 +55,7 @@ function Authorize(){
                     if ( records[i].username == self.username &&
                         records[i].password == self.password ){
                             AuthService.user = records[i];
+                            console.log(records[i]);
                             $rootScope.loggedIn = true;
                             $state.go('dashboard');
                         }

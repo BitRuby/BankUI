@@ -6,8 +6,8 @@
 
     function navigationController($state, $scope, AuthService){
         var self = this;
-        if (AuthService.user)
-            self.username = AuthService.user.name;
+        if (AuthService!=null)
+            self.username = AuthService.user.firstName + " " + AuthService.user.secondName;
         /*
         var self = this;
         self.submit = function(){

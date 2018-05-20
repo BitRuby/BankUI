@@ -3,17 +3,29 @@
         {
             "id":"1",
             "username":"udemy",
-            "password":"potato9"
+            "password":"potato9",
+            "firstName":"Andrew",
+            "secondName":"Thompson",
+            "balance": "7500.00",
+            "iban": "ES20 7090 1050 2300 2049 1846"
         },
         {
             "id":"2",
             "username":"admin",
-            "password":"safepass"
+            "password":"safepass",
+            "firstName":"Vladimir",
+            "secondName":"Novakowski",
+            "balance": "2500.00",
+            "iban": "ES01 2345 6789 0123 4567 8901"
         },
         {
             "id":"3",
             "username":"fire",
-            "password":"wall"
+            "password":"wall",
+            "firstName":"Wilhelm",
+            "secondName":"Schwarz",
+            "balance": "875.00",
+            "iban": "ES26 1000 1789 9843 0000 5091"
         }
     ]
 }
