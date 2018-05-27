@@ -1,0 +1,41 @@
+<div id="main-content">
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <ul class="nav nav-tabs">
+                <li role="presentation" ng-class="{ active: isSet(1) }"><a href ng-click="setTab(1)">My cards</a></li>
+                <li role="presentation" ng-class="{ active: isSet(2) }"><a href ng-click="setTab(2)">Card appliaction</a></li>
+            </ul>
+            <div style="margin:10px 0;"></div>
+            <div ng-show="isSet(1)">
+                <h2>My cards</h2>
+                <form action="">
+                    <div class="form-group">
+                        <select class="form-control">
+                            <option>VISA-4532-2387-7821-8599</option>
+                        </select>
+                    </div>
+                </form>
+                <div>
+                    <h4 class="text-info">About</h4>
+                    <p>Card type: Visa Debit</p>
+                    <p>Card number: 4532-2387-7821-8599</p>
+                    <p>Expiration date: 01-12-2020</p>
+                    <p></p>
+                </div>
+            </div>
+            <div ng-show="isSet(2)">
+                <h2>Card appliaction</h2>
+                <p>You can apply for a new card choosing one</p>
+                <form action="">
+                    <div class="form-group">
+                        <select class="form-control">
+                            <option>Debit</option>
+                            <option>Credit</option>
+                        </select>
+                    </div>
+                </form>
+                <div class="btn btn-primary">Apply</div>
+            </div>
+        </div>
+    </div>
+</div>

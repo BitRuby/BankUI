@@ -91,6 +91,24 @@ angular
                 }
             },
         }
+        var cardsState = {
+            name: 'cards',
+            url: '/cards',
+            views: {
+                nav: {
+                    templateUrl: 'components/navigation/navigation.tpl.html',
+                    controller: 'navigationController as nav'
+                },
+                menu: {
+                    templateUrl: 'components/menu/menu.tpl.html',
+                    controller: 'menuController as menu'
+                },
+                content: {
+                    templateUrl: 'components/cards/cards.tpl.html',
+                    controller: 'cardsController as card'
+                }
+            },
+        }
         var defaultState = {
             name: 'default',
             url: '/',
@@ -103,6 +121,7 @@ angular
         $stateProvider.state(userDetailsState);
         $stateProvider.state(transferState);
         $stateProvider.state(historyState);
+        $stateProvider.state(cardsState);
         $stateProvider.state(defaultState);
     }
 ])
