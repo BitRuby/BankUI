@@ -1,0 +1,135 @@
+<div id="main-content">
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+            <ul class="nav nav-tabs">
+                <li role="presentation" ng-class="{ active: isSet(1) }"><a href ng-click="setTab(1)">Domestic transfer</a></li>
+                <li role="presentation" ng-class="{ active: isSet(2) }"><a href ng-click="setTab(2)">Foreign transfer</a></li>
+                <li role="presentation" ng-class="{ active: isSet(3) }"><a href ng-click="setTab(3)">Templates</a></li>
+            </ul>
+            <div ng-show="isSet(1)">
+                <h2>New domestic transfer details</h2>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <form action="">
+                                <div class="form-group">
+                                    <label for="inputName">From account</label>
+                                    <select class="form-control">
+                                        <option>{{trans.iban}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName">Name</label>
+                                    <input type="text" class="form-control" id="inputName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputNumber">Account number</label>
+                                    <input class="form-control" type="number" ng-model="trans.accountNumber" required ng-minlength="26" id="inputNumber">
+                                </div>
+                                <div>
+                                    <p class="lighter" ng-bind="trans.bankName"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputAddress">Address (optional)</label>
+                                    <input type="text" class="form-control" id="inputAddress" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputAmount">Amount</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">USD$</div>
+                                        <input type="number" class="form-control" id="inputAmount" ng-model="trans.amuount" ng-minlength="1" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                            Instant transfer (USD$ 1.00 fee)
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                            Save as template
+                                        </label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Transfer cash</button>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+            <div ng-show="isSet(2)">
+                <h2>New foreign transfer details</h2>
+                <div class="row">
+                    <div class="col-md-10">
+                        <form action="">
+                            <div class="form-group">
+                                <label for="inputName">From account</label>
+                                <select class="form-control">
+                                    <option>{{trans.iban}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputName">Name</label>
+                                <input type="text" class="form-control" id="inputName">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputNumber">Account IBAN</label>
+                                <div class="input-group">
+                                <div class="input-group-addon">IBAN</div>
+                                <input class="form-control" type="number" ng-model="trans.accountNumber" required ng-minlength="26" id="inputNumber">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="swiftNumber">Account SWIFT Code</label>
+                                <div class="input-group">
+                                <div class="input-group-addon">SWIFT</div>
+                                <input class="form-control" type="number" ng-model="trans.swiftNumber" required id="swiftNumber">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="bankName">Bank name</label>
+                                <input class="form-control" type="text" ng-model="trans.swiftNumber" required id="bankName">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress">Address (optional)</label>
+                                <input type="text" class="form-control" id="inputAddress" >
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAmount">Amount</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">USD$</div>
+                                    <input type="number" class="form-control" id="inputAmount" ng-model="trans.amuount" ng-minlength="1" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" required>
+                                </div>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                    Save as template
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Transfer cash</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="isSet(3)">
+                <h2>Your templates</h2>
+                <div class="row">
+                    <div class="col-md-10">
+                        <form action="">
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>Tom Wozniak</option>
+                                    <option>Lisa Simpson</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Transfer from template</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>

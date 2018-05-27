@@ -1,6 +1,6 @@
 'use strict'; //Use Strict mode ES5
 angular
-.module('App', ['ui.router'])
+.module('App', ['ui.router', 'hl.css.ui.router'])
 .config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider){
 
@@ -11,6 +11,11 @@ angular
                 login: {
                     templateUrl: 'components/login/login.tpl.html',
                     controller: 'loginController as log'
+                }
+            },
+            data: {
+                css: {
+                    login: 'data/style/login-inputs.css'
                 }
             }
         }
@@ -31,7 +36,25 @@ angular
                     controller: 'dashboardController as dash'
                 }
             },
-        } 
+        }
+        var transferState = {
+            name: 'newTransfer',
+            url: '/newTransfer',
+            views: {
+                nav: {
+                    templateUrl: 'components/navigation/navigation.tpl.html',
+                    controller: 'navigationController as nav'
+                },
+                menu: {
+                    templateUrl: 'components/menu/menu.tpl.html',
+                    controller: 'menuController as menu'
+                },
+                content: {
+                    templateUrl: 'components/new-transfer/new-transfer.tpl.html',
+                    controller: 'transferController as trans'
+                }
+            },
+        }
         var userDetailsState = {
             name: 'userDetails',
             url: '/userDetails',
@@ -60,6 +83,7 @@ angular
         $stateProvider.state(loginState);
         $stateProvider.state(dashboardState);
         $stateProvider.state(userDetailsState);
+        $stateProvider.state(transferState);
         $stateProvider.state(defaultState);
     }
 ])

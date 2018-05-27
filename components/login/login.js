@@ -60,9 +60,10 @@ function Authorize(){
                             $state.go('dashboard');
                         }
                 }
-                self.message = 'Authetication Failed. Invalid credentials provided';
+                if (!self.password != "" || !self.username != "") { self.message = "Fields can't be empty!";}
+                else{ self.message = "Authetication Failed. Invalid credentials provided"; }
             }, function (errResponse) {
-                self.message = 'Authetication Failed. Invalid credentials provided';
+                self.message = "Authetication Failed.";
             });
         }
         if (AuthService.flag==true)
