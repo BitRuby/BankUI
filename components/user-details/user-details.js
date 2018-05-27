@@ -16,6 +16,8 @@
         if (AuthService.user){
             self.fullName = AuthService.user.firstName + " " + AuthService.user.secondName;
             self.login = AuthService.user.username;
+            self.firstName = AuthService.user.firstName;
+            self.secondName = AuthService.user.secondName;
         }
     }
 })();

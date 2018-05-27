@@ -72,7 +72,25 @@ angular
                     controller: 'userDetailsController as user'
                 }
             },
-        } 
+        }
+        var historyState = {
+            name: 'history',
+            url: '/history',
+            views: {
+                nav: {
+                    templateUrl: 'components/navigation/navigation.tpl.html',
+                    controller: 'navigationController as nav'
+                },
+                menu: {
+                    templateUrl: 'components/menu/menu.tpl.html',
+                    controller: 'menuController as menu'
+                },
+                content: {
+                    templateUrl: 'components/history/history.tpl.html',
+                    controller: 'historyController as his'
+                }
+            },
+        }
         var defaultState = {
             name: 'default',
             url: '/',
@@ -84,6 +102,7 @@ angular
         $stateProvider.state(dashboardState);
         $stateProvider.state(userDetailsState);
         $stateProvider.state(transferState);
+        $stateProvider.state(historyState);
         $stateProvider.state(defaultState);
     }
 ])
