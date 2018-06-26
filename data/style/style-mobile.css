@@ -111,7 +111,12 @@
 }
 }
 @media only screen and (max-width: 480px) {
-
+    .ui-menu{
+        width: 100%;
+    }
+    #separatorMenu{
+        display:none;
+    }
     .bg .left-panel {
         width: 320px;
         padding: 60px 20px;

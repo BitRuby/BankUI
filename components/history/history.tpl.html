@@ -35,6 +35,20 @@
                         <div class="col-md-1"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></div>
                     </div>
                 </a>
+                </div>
+                <div ng-repeat="row in his.historyData">
+                <p>{{ row.date | date:"fullDate" }}</p>
+                    <div class="list-group">
+                    <a class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-3">Out transfer</div>
+                            <div class="col-md-3">-{{ row.amount | currency:"USD$":0 }}</div>
+                            <div class="col-md-5">{{row.iban}}</div>
+                            <div class="col-md-1"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></div>
+                        </div>
+                    </a>
+                    </div>
+                </div>
             </div>
 
         </div>

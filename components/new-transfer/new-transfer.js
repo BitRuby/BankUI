@@ -55,6 +55,7 @@
             self.infoSuccessDomestic = true;
             self.infoFalse = false;
             $('#domesticTransfer').modal('hide');
+            TransferService.setNewTransfer(self.amount, self.accountNumber, new Date());
           }
           self.submitForm2 = function(isValid) {
             self.infoSuccess = false;

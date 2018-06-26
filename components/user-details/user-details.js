@@ -20,7 +20,7 @@ function UserService(){
     .module('App')
     .controller('userDetailsController', userDetailsController);
 
-    function userDetailsController(AuthService, $scope, UserService){
+    function userDetailsController(AuthService, $scope, UserService, ApplicationService){
         var self = this;
         $scope.tab = 1;
         $scope.setTab = function(newTab){
@@ -28,6 +28,12 @@ function UserService(){
         }
         $scope.isSet = function(tabNum){
           return $scope.tab === tabNum;
+        }
+        if (ApplicationService.getApplications().length>0){
+            self.applications = ApplicationService.getApplications();
+        }
+        else{
+            self.noOrdersInfo = true;
         }
         if (AuthService.user){
             self.fullName = AuthService.user.firstName + " " + AuthService.user.secondName;

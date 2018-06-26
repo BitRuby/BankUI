@@ -27,7 +27,21 @@
                     </div>
                 </div>
                 <div ng-show="isSet(2)">
-                    <p class="alert alert-info">You have no pending orders</p>
+                    <table class="table table-hover">
+                        <tr class="active">
+                            <th>Id</th>
+                            <th>Application type</th>
+                            <th></th>
+                        </tr>
+                        <tr class="" ng-repeat="row in user.applications">
+                            <td>{{row.id}}</td>
+                            <td>{{row.type}}</td>
+                            <td><i class="fa fa-exclamation-circle" aria-hidden="true"></i></td>
+                        </tr>
+                    </table>
+                    <div class="alert alert-info" ng-show="user.noOrdersInfo" role="alert">
+                            <a href="#" class="alert-link">You have no pending orders</a>
+                    </div>
                 </div>  
                 <div ng-show="isSet(3)">
                     <h2>Notification centre</h2>
