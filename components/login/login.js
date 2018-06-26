@@ -44,6 +44,8 @@ function Authorize(){
     .controller('loginController', loginController);
     function loginController($http, $q, $state, $scope, $rootScope, AuthService){
         var self = this;
+        self.username = "udemy";
+        self.password = "potato9";
         self.submit = function(){
             var REST_SERVICE_URI = 'http://127.0.0.1:5500/BankUI/json/users.json';
             $http({

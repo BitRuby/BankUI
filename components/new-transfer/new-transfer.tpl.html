@@ -1,6 +1,16 @@
 <div id="main-content">
     <div class="row">
         <div class="col-xs-12 col-md-12">
+                <div class="alert alert-success" role="alert" ng-show="trans.infoSuccessDomestic">
+                    <a href="#" class="alert-link">Domestic transfer has been send!</a>
+                </div>
+                <div class="alert alert-success" role="alert" ng-show="trans.infoSuccessForeign">
+                    <a href="#" class="alert-link">Foreign transfer has been send!</a>
+                </div>
+                <div class="alert alert-danger" role="alert" ng-show="trans.infoFalse">
+                    <a href="#" class="alert-link">Please fill required fields</a>
+                </div>
+            <div style="margin:10px 0"></div>
             <ul class="nav nav-tabs">
                 <li role="presentation" ng-class="{ active: isSet(1) }"><a href ng-click="setTab(1)">Domestic transfer</a></li>
                 <li role="presentation" ng-class="{ active: isSet(2) }"><a href ng-click="setTab(2)">Foreign transfer</a></li>
@@ -10,7 +20,7 @@
                 <h2>New domestic transfer details</h2>
                     <div class="row">
                         <div class="col-md-10">
-                            <form action="">
+                            <form name="userForm" ng-submit="trans.submitForm(userForm.$valid)" novalidate>
                                 <div class="form-group">
                                     <label for="inputName">From account</label>
                                     <select class="form-control">
@@ -19,24 +29,24 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">Name</label>
-                                    <input type="text" class="form-control" id="inputName">
+                                    <input type="text" class="form-control" id="inputName" ng-model="trans.name">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputNumber">Account number</label>
-                                    <input class="form-control" type="number" ng-model="trans.accountNumber" required ng-minlength="26" id="inputNumber">
+                                    <input class="form-control" ng-model="trans.accountNumber" required ng-minlength="26" id="inputNumber">
                                 </div>
                                 <div>
-                                    <p class="lighter" ng-bind="trans.bankName"></p>
+                                    <p class="lighter" ng-bind="trans.bankNameX"></p>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputAddress">Address (optional)</label>
-                                    <input type="text" class="form-control" id="inputAddress" >
+                                    <input type="text" class="form-control" id="inputAddress" ng-model="trans.address" >
                                 </div>
                                 <div class="form-group">
                                     <label for="inputAmount">Amount</label>
                                     <div class="input-group">
                                         <div class="input-group-addon">USD$</div>
-                                        <input type="number" class="form-control" id="inputAmount" ng-model="trans.amuount" ng-minlength="1" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" required>
+                                        <input type="number" class="form-control" id="inputAmount" ng-model="trans.amount" ng-minlength="1" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -62,7 +72,7 @@
                 <h2>New foreign transfer details</h2>
                 <div class="row">
                     <div class="col-md-10">
-                        <form action="">
+                            <form name="userForm2" ng-submit="trans.submitForm2(userForm2.$valid)" novalidate>
                             <div class="form-group">
                                 <label for="inputName">From account</label>
                                 <select class="form-control">
@@ -71,13 +81,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputName">Name</label>
-                                <input type="text" class="form-control" id="inputName">
+                                <input type="text" class="form-control" id="inputName" ng-model="trans.nameForeign">
                             </div>
                             <div class="form-group">
                                 <label for="inputNumber">Account IBAN</label>
                                 <div class="input-group">
                                 <div class="input-group-addon">IBAN</div>
-                                <input class="form-control" type="number" ng-model="trans.accountNumber" required ng-minlength="26" id="inputNumber">
+                                <input class="form-control" type="number" ng-model="trans.accountIBAN" required ng-minlength="26" id="inputNumber">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -89,17 +99,17 @@
                             </div>
                             <div class="form-group">
                                 <label for="bankName">Bank name</label>
-                                <input class="form-control" type="text" ng-model="trans.swiftNumber" required id="bankName">
+                                <input class="form-control" type="text" ng-model="trans.bankName" required id="bankName">
                             </div>
                             <div class="form-group">
                                 <label for="inputAddress">Address (optional)</label>
-                                <input type="text" class="form-control" id="inputAddress" >
+                                <input type="text" class="form-control" id="inputAddress" ng-model="trans.addressForeign"  >
                             </div>
                             <div class="form-group">
                                 <label for="inputAmount">Amount</label>
                                 <div class="input-group">
                                     <div class="input-group-addon">USD$</div>
-                                    <input type="number" class="form-control" id="inputAmount" ng-model="trans.amuount" ng-minlength="1" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" required>
+                                    <input type="number" class="form-control" id="inputAmount" ng-model="trans.amountForeign" ng-minlength="1" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" required>
                                 </div>
                             </div>
                             <div class="checkbox">
@@ -119,12 +129,12 @@
                     <div class="col-md-10">
                         <form action="">
                             <div class="form-group">
-                                <select class="form-control">
-                                    <option>Tom Wozniak</option>
-                                    <option>Lisa Simpson</option>
+                                <select class="form-control" ng-model="trans.templates">
+                                    <option value="wozniak">Tom Wozniak</option>
+                                    <option value="simpson">Lisa Simpson</option>
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-primary">Transfer from template</button>
+                            <button type="submit" class="btn btn-primary" ng-click="trans.fromTemplate()" >Transfer from template</button>
                         </form>
                     </div>
                 </div>
@@ -133,3 +143,67 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="domesticTransfer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Domestic transfer summary</h4>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                  <div class="col-md-6">
+                    <strong>Name</strong>
+                    <p>{{trans.modalName}}</p>
+                    <strong>Account number</strong>
+                    <p>{{trans.modalAccount}}</p>
+                    <strong>Amount</strong>
+                    <p>USD$ {{trans.modalAmount}}</p>
+                  </div>
+                  <div class="col-md-6">
+                    <strong>Address</strong>
+                    <p>{{trans.modalAddress}}</p>
+                  </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" ng-click="trans.confirmTransfer()">Proceed</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="foreignTransfer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Foreign transfer summary</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                      <div class="col-md-6">
+                        <strong>Name</strong>
+                        <p>{{trans.modalNameForeign}}</p>
+                        <strong>IBAN</strong>
+                        <p>{{trans.modalIBAN}}</p>
+                        <strong>SWIFT</strong>
+                        <p>{{trans.modalSwift}}</p>
+                        <strong>Amount</strong>
+                        <p>USD$ {{trans.modalAmountForeign}}</p>
+                        <strong>Bank name</strong>
+                        <p>{{trans.modalNameBank}}</p>
+                      </div>
+                      <div class="col-md-6">
+                        <strong>Address</strong>
+                        <p>{{trans.modalAddressForeign}}</p>
+                      </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" ng-click="trans.confirmTransfer2()">Proceed</button>
+                </div>
+              </div>
+            </div>
+          </div>

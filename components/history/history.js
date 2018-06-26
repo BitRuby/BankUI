@@ -1,3 +1,13 @@
+angular
+.module("App")
+.service("TransferService", TransferService);
+
+function TransferService(){
+    return{
+        
+    }
+}
+
 (function(){
     'use strict';
     angular.module('App')
